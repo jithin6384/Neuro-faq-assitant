@@ -1,4 +1,25 @@
 # Neuro FAQ Assistant
+## 12. Docker Images
+
+The application has been containerized into three independent Docker images.
+
+### 12.1 Spring Boot Backend
+
+```
+https://hub.docker.com/r/6483jithin/neuro-faq-backend
+```
+
+### 12.2 React Frontend
+
+```
+https://hub.docker.com/r/6483jithin/neuro-faq-frontend
+```
+
+### 12.3 Neuro-SAN Service
+
+```
+https://hub.docker.com/r/6483jithin/neuro-san-service
+```
 
 ## 1. Overview
 
