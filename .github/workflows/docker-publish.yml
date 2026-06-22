@@ -1,0 +1,41 @@
+name: Build and Push Docker Images
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and push backend image
+        uses: docker/build-push-action@v6
+        with:
+          context: ./neuro-faq-backend
+          push: true
+          tags: 6483jithin/neuro-faq-backend:latest
+
+      - name: Build and push frontend image
+        uses: docker/build-push-action@v6
+        with:
+          context: ./neurofaq-userInterface
+          push: true
+          tags: 6483jithin/neuro-faq-frontend:latest
+
+      - name: Build and push Neuro-SAN image
+        uses: docker/build-push-action@v6
+        with:
+          context: ./neuro-san-service
+          push: true
+          tags: 6483jithin/neuro-san-service:latest
